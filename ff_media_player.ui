@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>FF_Media_PlayerClass</class>
+ <widget class="QWidget" name="FF_Media_PlayerClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>913</width>
+    <height>548</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>FF_Media_Player</string>
+  </property>
+  <widget class="FF_Video_Widget" name="video">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>891</width>
+     <height>471</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>520</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>open</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="isplay">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>520</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>play</string>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>FF_Video_Widget</class>
+   <extends>QOpenGLWidget</extends>
+   <header>ff_video_widget.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="ff_media_player.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>FF_Media_PlayerClass</receiver>
+   <slot>on_openButton()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>129</x>
+     <y>537</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>121</x>
+     <y>666</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>isplay</sender>
+   <signal>clicked()</signal>
+   <receiver>FF_Media_PlayerClass</receiver>
+   <slot>PlayOrPause()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>350</x>
+     <y>534</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>342</x>
+     <y>587</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>on_openButton()</slot>
+  <slot>on_playButton()</slot>
+  <slot>on_stopButton()</slot>
+  <slot>slot1()</slot>
+  <slot>PlayOrPause()</slot>
+ </slots>
+</ui>
