@@ -26,8 +26,8 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>520</y>
+     <x>10</x>
+     <y>490</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -39,14 +39,40 @@
   <widget class="QPushButton" name="isplay">
    <property name="geometry">
     <rect>
-     <x>300</x>
-     <y>520</y>
+     <x>100</x>
+     <y>490</y>
      <width>75</width>
      <height>23</height>
     </rect>
    </property>
    <property name="text">
     <string>play</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>520</y>
+     <width>311</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="rtmp_open">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>520</y>
+     <width>111</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>open stream</string>
    </property>
   </widget>
  </widget>
@@ -94,6 +120,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>rtmp_open</sender>
+   <signal>clicked()</signal>
+   <receiver>FF_Media_PlayerClass</receiver>
+   <slot>on_rtmpButton()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>404</x>
+     <y>533</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>404</x>
+     <y>592</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>on_openButton()</slot>
@@ -101,5 +143,6 @@
   <slot>on_stopButton()</slot>
   <slot>slot1()</slot>
   <slot>PlayOrPause()</slot>
+  <slot>on_rtmpButton()</slot>
  </slots>
 </ui>

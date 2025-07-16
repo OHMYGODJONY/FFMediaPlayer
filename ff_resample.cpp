@@ -10,7 +10,7 @@ using namespace std;
 void FF_Resample::Close()
 {
 	mux_.lock();
-	if (res_ctx_) 
+	if (res_ctx_)
 	{
 		swr_free(&res_ctx_);
 		res_ctx_ = nullptr;
@@ -25,7 +25,7 @@ bool FF_Resample::Open(AVCodecParameters* para, bool isClearPara)
 	res_ctx_ = swr_alloc_set_opts(res_ctx_,
 		av_get_default_channel_layout(para->channels),
 		AV_SAMPLE_FMT_S16,
-		para->sample_rate,
+		44100,
 		av_get_default_channel_layout(para->channels),
 		(AVSampleFormat)para->format,
 		para->sample_rate,

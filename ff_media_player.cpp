@@ -10,6 +10,7 @@ FF_Media_Player::FF_Media_Player(QWidget *parent)
     : QWidget(parent)
 {
     ui.setupUi(this);
+    ui.lineEdit->setPlaceholderText("input RTMP URL");
     dt.Start();
     //startTimer(5);
 }
@@ -29,21 +30,17 @@ void FF_Media_Player::mouseDoubleClickEvent(QMouseEvent* e)
 
 void FF_Media_Player::resizeEvent(QResizeEvent* e)
 {
-    //ui.playPos->move(50, this->height() - 100);
-    //ui.playPos->resize(this->width() - 100, ui.playPos->height());
-    //ui.openFile->move(100, this->height() - 150);
-   /* ui.video->resize(this->size());*/
+    ui.pushButton->move(10, this->height() - 100);
+    ui.isplay->move(100, this->height() - 100);
+    ui.lineEdit->move(10, this->height() - 70);
+    ui.rtmp_open->move(330, this->height() - 70);
+    ui.video->move(10, 10);
+    ui.video->resize(this->width() - 20, (int)((this->width() - 20) / 16 * 9));
 }
 
 void FF_Media_Player::timerEvent(QTimerEvent* e)
 {
-    long long total = dt.totalMs;
-    if (total > 0)
-    {
-        double pos = (double)dt.pts / (double)total;
-        /*int v = ui.playPos->maximum() * pos;
-        ui.playPos->setValue(v);*/
-    }
+    
 }
 
 void FF_Media_Player::on_openButton()
@@ -51,7 +48,22 @@ void FF_Media_Player::on_openButton()
     QString filePath = QFileDialog::getOpenFileName(this, "open file");
     if (filePath.isEmpty())return;
     cout << filePath.toLocal8Bit() << endl;
-    if (!dt.Open(filePath.toLocal8Bit(), ui.video))
+    std::string file = filePath.toStdString();
+    if (!dt.Open(file.c_str(), ui.video))
+    {
+        QMessageBox::information(0, "error", "open file failed!");
+        return;
+    }
+    SetPause(dt.isPause);
+}
+
+void FF_Media_Player::on_rtmpButton()
+{
+    QString filePath = ui.lineEdit->text();
+    if (filePath.isEmpty())return;
+    cout << filePath.toLocal8Bit() << endl;
+    std::string file = filePath.toStdString();
+    if (!dt.Open(file.c_str(), ui.video))//   rtmp://liteavapp.qcloud.com/live/liteavdemoplayerstreamid
     {
         QMessageBox::information(0, "error", "open file failed!");
         return;

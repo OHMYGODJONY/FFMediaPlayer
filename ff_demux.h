@@ -30,5 +30,6 @@ protected:
 	AVFormatContext* ifmt_ctx_ = NULL;
 	int video_index_ = -1;
 	int audio_index_ = -1;
+	bool is_rtmp_ = false;
 };
 

@@ -106,19 +106,6 @@ public:
             return false;
         }
         return true;
-
-        //// 分块写入以确保完全写入
-        //int totalWritten = 0;
-        //while (totalWritten < datasize) {
-        //    int chunk = io->write(
-        //        reinterpret_cast<const char*>(data + totalWritten),
-        //        datasize - totalWritten
-        //    );
-        //    if (chunk <= 0) break;
-        //    totalWritten += chunk;
-        //}
-
-        //return totalWritten == datasize;
     }
 
     virtual int GetFree() override

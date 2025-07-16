@@ -15,10 +15,12 @@ public:
     void resizeEvent(QResizeEvent* e);
     void mouseDoubleClickEvent(QMouseEvent* e);
     void SetPause(bool isPause);
+    
 
 private slots:
     void on_openButton();
     void PlayOrPause();
+    void on_rtmpButton();
 
 //private:
 public:
